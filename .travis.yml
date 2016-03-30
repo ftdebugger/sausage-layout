@@ -1,0 +1,8 @@
+language: node_js
+before_script:
+  - npm install
+node_js:
+  - "0.10"
+  - "0.12"
+  - "4.4"
+  - "5.0"
