@@ -7,7 +7,7 @@ export class jQuerySausageLayout extends SausageLayout {
      */
     constructor(options) {
         super(options);
-        
+
         this.$container = options.$container;
     }
 
@@ -18,7 +18,7 @@ export class jQuerySausageLayout extends SausageLayout {
         this._appendElement($element);
         this._resizeContainer();
     }
-    
+
     /**
      * @param {number} containerWidth
      */
@@ -40,20 +40,23 @@ export class jQuerySausageLayout extends SausageLayout {
      */
     _appendElement($element) {
         let {width, height} = $element.data();
-        let {top, left} = this.append({
+
+        let geometry = this.append({
             width: Number(width),
             height: Number(height)
         });
 
         $element.css({
-            left: left + 'px',
-            top: top + 'px'
+            left: geometry.left + 'px',
+            top: geometry.top + 'px',
+            width: geometry.width + 'px',
+            height: geometry.height + 'px'
         });
     }
 
     /**
      * Change height of container
-     * 
+     *
      * @private
      */
     _resizeContainer() {

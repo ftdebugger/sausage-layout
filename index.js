@@ -57,6 +57,7 @@ export class SausageLayout {
 
         if (width !== this.width) {
             height = this.width * height / width;
+            width = this.width;
         }
 
         left = (this.width + this.gutter) * columnIndex;
@@ -64,7 +65,7 @@ export class SausageLayout {
 
         this.heights[columnIndex] += height;
 
-        return {left, top};
+        return {left, top, width, height};
     }
 
 }
