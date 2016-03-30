@@ -1,4 +1,4 @@
-Sausage layout
+Sausage layout [![Build Status](https://travis-ci.org/ftdebugger/sausage-layout.svg?branch=master)](https://travis-ci.org/ftdebugger/sausage-layout)
 ==============
 
 Masonry layout for node.js
