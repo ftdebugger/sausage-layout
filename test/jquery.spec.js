@@ -32,15 +32,13 @@ describe('Sausage layout', function () {
             expect($container.find('div').eq(0).css()).to.eql({
                 left: '0px',
                 top: '0px',
-                width: '100px',
-                height: '200px'
+                width: '100px'
             });
 
             expect($container.find('div').eq(1).css()).to.eql({
                 left: '110px',
                 top: '0px',
-                width: '100px',
-                height: '100px'
+                width: '100px'
             });
 
         });
