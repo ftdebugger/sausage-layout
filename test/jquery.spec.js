@@ -26,7 +26,7 @@ describe('Sausage layout', function () {
             layout.resize(210);
 
             expect($container.css()).to.eql({
-                height: '400px'
+                height: '430px'
             });
 
             expect($container.find('div').eq(0).css()).to.eql({
