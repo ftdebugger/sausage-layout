@@ -3,7 +3,7 @@ import cheerio from 'cheerio/lib/cheerio';
 
 import {jQuerySausageLayout} from '../jquery';
 
-describe('Sausage layout', function () {
+describe('jQuery sausage layout', function () {
     let layout, $container;
 
     describe('resize', function () {

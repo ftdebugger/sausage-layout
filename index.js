@@ -72,4 +72,11 @@ export class SausageLayout {
         return {left, top, width, height};
     }
 
+    /**
+     * @returns {number}
+     */
+    getLayoutHeight() {
+        return Math.max.apply(Math, this.heights);
+    }
+
 }
