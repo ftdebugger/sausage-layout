@@ -21,8 +21,8 @@ describe('Sausage layout', function () {
                 width: 100,
 
                 nodes: [
-                    {node: {height: 100}, out: {left: 0, top: 0, width: 100, height: 100}},
-                    {node: {height: 100}, out: {left: 0, top: 110, width: 100, height: 100}}
+                    {node: {height: 100}, out: {columnIndex: 0, left: 0, top: 0, width: 100, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 0, left: 0, top: 110, width: 100, height: 100}}
                 ]
             },
             '100 = 100': {
@@ -45,10 +45,10 @@ describe('Sausage layout', function () {
                 width: 100,
 
                 nodes: [
-                    {node: {height: 100}, out: {left: 0, top: 0, width: 100, height: 100}},
-                    {node: {height: 100}, out: {left: 110, top: 0, width: 100, height: 100}},
-                    {node: {height: 100}, out: {left: 0, top: 110, width: 100, height: 100}},
-                    {node: {height: 100}, out: {left: 110, top: 110, width: 100, height: 100}}
+                    {node: {height: 100}, out: {columnIndex: 0, left: 0, top: 0, width: 100, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 1, left: 110, top: 0, width: 100, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 0, left: 0, top: 110, width: 100, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 1, left: 110, top: 110, width: 100, height: 100}}
                 ]
 
             },
@@ -58,10 +58,10 @@ describe('Sausage layout', function () {
                 width: 145,
 
                 nodes: [
-                    {node: {height: 200}, out: {left: 0, top: 0, width: 145, height: 200}},
-                    {node: {height: 100}, out: {left: 155, top: 0, width: 145, height: 100}},
-                    {node: {height: 100}, out: {left: 155, top: 110, width: 145, height: 100}},
-                    {node: {height: 100}, out: {left: 0, top: 210, width: 145, height: 100}}
+                    {node: {height: 200}, out: {columnIndex: 0, left: 0, top: 0, width: 145, height: 200}},
+                    {node: {height: 100}, out: {columnIndex: 1, left: 155, top: 0, width: 145, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 1, left: 155, top: 110, width: 145, height: 100}},
+                    {node: {height: 100}, out: {columnIndex: 0, left: 0, top: 210, width: 145, height: 100}}
                 ]
             },
             '410 = 200 + (10) + 200': {
@@ -70,9 +70,9 @@ describe('Sausage layout', function () {
                 width: 200,
 
                 nodes: [
-                    {node: {width: 400, height: 100}, out: {left: 0, top: 0, width: 200, height: 50}},
-                    {node: {width: 400, height: 100}, out: {left: 210, top: 0, width: 200, height: 50}},
-                    {node: {width: 400, height: 100}, out: {left: 0, top: 60, width: 200, height: 50}}
+                    {node: {width: 400, height: 100}, out: {columnIndex: 0, left: 0, top: 0, width: 200, height: 50}},
+                    {node: {width: 400, height: 100}, out: {columnIndex: 1, left: 210, top: 0, width: 200, height: 50}},
+                    {node: {width: 400, height: 100}, out: {columnIndex: 0, left: 0, top: 60, width: 200, height: 50}}
                 ]
             },
             '440 = 140 + (10) + 140 + (10) + 140': {
