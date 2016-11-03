@@ -64,12 +64,12 @@ export class SausageLayout {
             width = this.width;
         }
 
-        left = (this.width + this.gutterX) * columnIndex;
+        left = this.getLeft(columnIndex);
         top = columnHeight;
 
         this.heights[columnIndex] += height + this.gutterY;
 
-        return {left, top, width, height};
+        return {left, top, width, height, columnIndex};
     }
 
     /**
@@ -77,6 +77,14 @@ export class SausageLayout {
      */
     getLayoutHeight() {
         return Math.max.apply(Math, this.heights);
+    }
+
+    /**
+     * @param {number} columnIndex
+     * @returns {number}
+     */
+    getLeft(columnIndex) {
+        return (this.width + this.gutterX) * columnIndex;
     }
 
 }
