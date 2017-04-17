@@ -109,7 +109,8 @@ describe('Sausage layout', function () {
         beforeEach(function () {
             layout = new SausageLayout({
                 width: 200,
-                gutter: 10
+                gutter: 10,
+                maxColumns: 5
             });
         });
 
@@ -129,6 +130,14 @@ describe('Sausage layout', function () {
                 columns: 1,
                 width: 200,
                 containerWidth: 200,
+
+                nodes: []
+            },
+            '1040 = [50] + 200 + (10) + ... + (10) + 200 + [50]': {
+                container: 300000,
+                columns: 5,
+                width: 200,
+                containerWidth: 1040,
 
                 nodes: []
             }
