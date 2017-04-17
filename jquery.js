@@ -5,12 +5,13 @@ let uniqueId = 0;
 export class jQuerySausageLayout extends SausageLayout {
 
     /**
-     * @param {{$container: (jQuery|cheerio)}} options
+     * @param {{$container: (jQuery|cheerio), $widthContainer: (jQuery|cheerio)}} options
      */
     constructor(options) {
         super(options);
 
         this.$container = options.$container;
+        this.$widthContainer = options.$widthContainer || options.$container;
         this.destroyers = [];
     }
 
@@ -25,10 +26,10 @@ export class jQuerySausageLayout extends SausageLayout {
     /**
      * @param {number} containerWidth
      */
-    resize(containerWidth = this.$container.width()) {
+    resize(containerWidth = this.$widthContainer.width()) {
         super.resize(containerWidth);
 
-        var $children = this.$container.children();
+        let $children = this.$container.children();
 
         for (let index = 0; index < $children.length; index++) {
             $children.css('width', this.width + 'px');
@@ -48,7 +49,7 @@ export class jQuerySausageLayout extends SausageLayout {
      * @param $container
      */
     watch($container) {
-        var eventName = 'resize.sausage' + uniqueId++;
+        let eventName = 'resize.sausage' + uniqueId++;
 
         $container.on(eventName, () => {
             this.resize();
@@ -100,6 +101,10 @@ export class jQuerySausageLayout extends SausageLayout {
     _resizeContainer() {
         let maxHeight = Math.max.apply(Math, this.heights);
         this.$container.css('height', maxHeight + 'px');
+
+        if (this.$widthContainer !== this.$container) {
+            this.$container.css('width', this.containerWidth + 'px');
+        }
     }
 
 }

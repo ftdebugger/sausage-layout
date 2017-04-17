@@ -3,13 +3,14 @@ export class SausageLayout {
     /**
      * @param {number} minWidth
      * @param {number} maxWidth
+     * @param {number} width
      * @param {number} [gutter]
      * @param {number} [gutterX]
      * @param {number} [gutterY]
      */
-    constructor({minWidth, maxWidth, gutterX, gutterY, gutter = 0}) {
-        this.minWidth = minWidth;
-        this.maxWidth = maxWidth;
+    constructor({minWidth, maxWidth, gutterX, gutterY, width, gutter = 0}) {
+        this.minWidth = minWidth || width;
+        this.maxWidth = maxWidth || width;
 
         this.gutterX = gutterX || gutter;
         this.gutterY = gutterY || gutter;
@@ -22,8 +23,12 @@ export class SausageLayout {
         let maxCount = Math.floor((containerWidth + this.gutterX) / (this.maxWidth + this.gutterX)),
             maxWidth = maxCount * (this.maxWidth + this.gutterX) - this.gutterX;
 
-        if (maxWidth < containerWidth) {
-            maxCount++;
+        if (this.maxWidth === this.minWidth) {
+            containerWidth = maxWidth
+        } else {
+            if (maxWidth < containerWidth) {
+                maxCount++;
+            }
         }
 
         if (maxCount <= 0) {
@@ -43,9 +48,11 @@ export class SausageLayout {
 
         this.heights = [];
 
-        for (var i = 0; i < this.columns; i++) {
+        for (let i = 0; i < this.columns; i++) {
             this.heights.push(0);
         }
+
+        this.containerWidth = containerWidth;
     }
 
     /**

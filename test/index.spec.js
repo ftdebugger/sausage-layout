@@ -5,6 +5,26 @@ import {SausageLayout} from '../index';
 describe('Sausage layout', function () {
     let layout;
 
+    function buildCases(cases) {
+        Object.keys(cases).forEach(caseName => {
+            it(caseName, () => {
+                let {container, containerWidth, columns, width, nodes} = cases[caseName];
+
+                layout.resize(container);
+                expect(layout.columns).to.equal(columns, 'columns');
+                expect(layout.width).to.equal(width, 'width');
+
+                if (containerWidth) {
+                    expect(layout.containerWidth).to.equal(containerWidth, 'container width');
+                }
+
+                nodes.forEach(({node, out}) => {
+                    expect(layout.append(node)).to.eql(out, 'node position');
+                });
+            });
+        });
+    }
+
     describe('resize', function () {
         beforeEach(function () {
             layout = new SausageLayout({
@@ -14,7 +34,7 @@ describe('Sausage layout', function () {
             });
         });
 
-        let cases = {
+        buildCases({
             '0 = 100': {
                 container: 0,
                 columns: 1,
@@ -82,20 +102,36 @@ describe('Sausage layout', function () {
 
                 nodes: []
             }
-        };
+        });
+    });
 
-        Object.keys(cases).forEach(caseName => {
-            it(caseName, () => {
-                let {container, columns, width, nodes} = cases[caseName];
-
-                layout.resize(container);
-                expect(layout.columns).to.equal(columns, 'columns');
-                expect(layout.width).to.equal(width, 'width');
-
-                nodes.forEach(({node, out}) => {
-                    expect(layout.append(node)).to.eql(out, 'node position');
-                });
+    describe('Fix width', function() {
+        beforeEach(function () {
+            layout = new SausageLayout({
+                width: 200,
+                gutter: 10
             });
+        });
+
+        buildCases({
+            '410 = 200 + (10) + 200': {
+                container: 410,
+                columns: 2,
+                width: 200,
+
+                nodes: [
+                    {node: {width: 400, height: 100}, out: {columnIndex: 0, left: 0, top: 0, width: 200, height: 50}},
+                    {node: {width: 400, height: 100}, out: {columnIndex: 1, left: 210, top: 0, width: 200, height: 50}}
+                ]
+            },
+            '300 = [50] + 200 + [50]': {
+                container: 300,
+                columns: 1,
+                width: 200,
+                containerWidth: 200,
+
+                nodes: []
+            }
         });
     });
 
